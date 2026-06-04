@@ -1,48 +1,93 @@
 import { MongoClient } from "mongodb";
 
-export default async function handler(req, res) {
+export default async function handler(
+    req,
+    res
+){
 
-    if(req.method !== "POST") {
+    if(req.method !== "POST"){
+
         return res.status(405).json({
+
             success: false,
-            message: "Method not allowed"
+            error: "Method not allowed"
+
         });
+
     }
 
     try {
 
-        const { username, phone } = req.body;
+        const {
+            username,
+            phone
+        } = req.body;
 
-        const client = new MongoClient(
+        if(!username || !phone){
+
+            return res.status(400).json({
+
+                success: false,
+                error: "Data tidak lengkap"
+
+            });
+
+        }
+
+        const cleanPhone =
+        phone.replace(/\s+/g, "");
+
+        const client =
+        new MongoClient(
             process.env.MONGODB_URI
         );
 
         await client.connect();
 
-        const db = client.db("skp2m");
+        const db =
+        client.db("skp2m");
 
-        const result = await db
-        .collection("members")
-        .insertOne({
+        const members =
+        db.collection("members");
+
+        const existing =
+        await members.findOne({
+
+            phone: cleanPhone
+
+        });
+
+        if(existing){
+
+            await client.close();
+
+            return res.status(400).json({
+
+                success: false,
+                error: "Nomor sudah terdaftar"
+
+            });
+
+        }
+
+        const result =
+        await members.insertOne({
+
             username,
-            phone,
-            createdAt: new Date()
+            phone: cleanPhone,
+
+            createdAt:
+            new Date()
+
         });
 
         await client.close();
 
-        res.status(200).json({
+        return res.status(200).json({
+
             success: true,
-            id: result.insertedId
+
+            memberId:
+            result.insertedId
+
         });
-
-    } catch(err) {
-
-        res.status(500).json({
-            success: false,
-            error: err.message
-        });
-
-    }
-
-}
