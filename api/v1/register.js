@@ -64,6 +64,7 @@ if (req.method === "OPTIONS") {
         const result = await members.insertOne({
             username,
             phone: cleanPhone,
+            announced: true,
             createdAt: new Date()
         });
 
