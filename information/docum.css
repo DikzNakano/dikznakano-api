@@ -92,12 +92,17 @@ body{
 
     background:rgba(255,0,0,.04);
 
+    box-shadow:0 0 12px rgba(255,0,0,.05);
+
     transition:.3s;
 }
 
 .btn:hover{
     background:rgba(255,0,0,.08);
+
+    box-shadow:0 0 18px rgba(255,0,0,.08);
 }
+
 
 /* Docs */
 
@@ -124,10 +129,7 @@ body{
 
     padding:20px;
 
-    height:max-content;
-
-    position:sticky;
-    top:20px;
+    box-shadow:0 0 15px rgba(255,0,0,.05);
 }
 
 .sidebar h3{
@@ -170,6 +172,8 @@ body{
     padding:25px;
 
     margin-bottom:25px;
+
+    box-shadow:0 0 20px rgba(255,0,0,.05);
 }
 
 .card h2{
