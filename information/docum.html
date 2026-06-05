@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DikzNakano API Docs</title>
+
+    <link rel="stylesheet" href="./docs.css">
+</head>
+<body>
+
+    <header>
+        <h1>DikzNakano API</h1>
+        <p>API Documentation</p>
+    </header>
+
+    <main>
+
+        <section class="base-url">
+            <h2>Base URL</h2>
+
+            <div class="box">
+                <code>https://api.dikznakano.my.id</code>
+            </div>
+        </section>
+
+        <section class="category">
+
+            <h2>Random Image</h2>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/api/random/neko</code>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/api/random/waifu</code>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/api/random/mahiru</code>
+            </div>
+
+        </section>
+
+        <section class="category">
+
+            <h2>Tools</h2>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/api/tools/ssweb?url=</code>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/api/tools/qrcode?text=</code>
+            </div>
+
+        </section>
+
+        <section class="category">
+
+            <h2>AI</h2>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/api/ai/chat?prompt=</code>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="./docs.js"></script>
+
+</body>
+</html>
