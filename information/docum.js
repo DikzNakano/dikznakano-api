@@ -1,1 +1,1 @@
-console.log("DikzNakano API Docs Loaded");
+console.log("Dikz Documentation Loaded");
