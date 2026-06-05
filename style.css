@@ -31,7 +31,7 @@ body{
     width:450px;
     height:450px;
     background:#ff0000;
-    opacity:.8;
+    opacity:.18;
     top:-100px;
     left:-100px;
 }
@@ -40,7 +40,7 @@ body{
     width:400px;
     height:400px;
     background:#ff1a1a;
-    opacity:.5;
+    opacity:.15;
     bottom:-100px;
     right:-100px;
 }
@@ -60,9 +60,9 @@ header{
     color:#ff2e2e;
 
     text-shadow:
-        0 0 5px #ff0000,
         0 0 10px #ff0000,
-        0 0 15px #ff0000;
+        0 0 20px #ff0000,
+        0 0 40px #ff0000;
 }
 
 nav{
@@ -109,10 +109,10 @@ nav a:hover{
     color:#ff2e2e;
 
     text-shadow:
-        0 0 5px #ff0000,
         0 0 10px #ff0000,
-        0 0 15px #ff0000,
-        0 0 20px #ff0000;
+        0 0 20px #ff0000,
+        0 0 40px #ff0000,
+        0 0 70px #ff0000;
 }
 
 .hero p{
