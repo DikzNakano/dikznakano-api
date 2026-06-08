@@ -77,56 +77,44 @@ header::after{
 }
 
 .logo{
-  position: relative;
-  display: inline-block;
+  position:relative;
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:#fff;
+  display:inline-block;
 
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 1px;
-
-  color: #fff;
-
-  animation: glitchIntro .35s ease-out;
+  animation: glitchMain 6s infinite;
 }
 
 .logo span{
   color:#ff4040;
-
   text-shadow:
-  0 0 8px rgba(255,0,0,.45),
-  0 0 16px rgba(255,0,0,.35),
-  0 0 24px rgba(255,0,0,.25);
+    0 0 8px rgba(255,0,0,.45),
+    0 0 16px rgba(255,0,0,.35),
+    0 0 24px rgba(255,0,0,.25);
 }
 
-/* layer merah */
 .logo::before{
-  content: attr(data-text);
-
-  position: absolute;
-  inset: 0;
-
-  color: #ff4040;
-  opacity: .55;
-
-  pointer-events: none;
-
-  animation: glitchRed .35s ease-out;
+  content:attr(data-text);
+  position:absolute;
+  inset:0;
+  color:#ff4040;
+  opacity:0;
+  z-index:-1;
+  animation: glitchRed 6s infinite;
 }
 
-/* layer putih */
 .logo::after{
-  content: attr(data-text);
-
-  position: absolute;
-  inset: 0;
-
-  color: #ffffff;
-  opacity: .35;
-
-  pointer-events: none;
-
-  animation: glitchWhite .35s ease-out;
+  content:attr(data-text);
+  position:absolute;
+  inset:0;
+  color:#fff;
+  opacity:0;
+  z-index:-1;
+  animation: glitchWhite 6s infinite;
 }
+
 
 nav{
   display:flex;
@@ -360,29 +348,29 @@ nav a:hover{
    RESPONSIVE
 ======================= */
 
-@keyframes glitchIntro{
-  0%{
-    transform: translate(0);
+@keyframes glitchMain{
+  0%,94%,100%{
+    transform:none;
   }
 
-  15%{
-    transform: translate(-2px,1px);
+  95%{
+    transform:skewX(25deg) scaleX(1.08);
   }
 
-  30%{
-    transform: translate(2px,-1px);
+  96%{
+    transform:translateX(-2px);
   }
 
-  45%{
-    transform: translate(-2px,-1px);
+  97%{
+    transform:translateX(2px);
   }
 
-  60%{
-    transform: translate(2px,1px);
+  98%{
+    transform:translateX(-1px);
   }
 
-  100%{
-    transform: translate(0);
+  99%{
+    transform:none;
   }
 }
 
