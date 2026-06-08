@@ -1,84 +1,305 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DikzNakano</title>
+/* ===== RESET ===== */
 
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-  <div class="background"></div>
+html {
+    scroll-behavior: smooth;
+}
 
-  <header>
-    <div class="logo">
-      Dikz<span>Nakano</span>
-    </div>
+body {
+    font-family: Inter, sans-serif;
+    background: #080808;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Preset</a>
-      <a href="#">Social</a>
-      <a href="#">About</a>
-    </nav>
-  </header>
+/* ===== BACKGROUND ===== */
 
-  <main>
-    <section class="hero">
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at top left,
+            rgba(255, 0, 0, 0.08),
+            transparent 35%),
+        radial-gradient(circle at bottom right,
+            rgba(255, 30, 30, 0.06),
+            transparent 35%);
+    pointer-events: none;
+    z-index: -1;
+}
 
-      <div class="badge">
-        🚀 DikzNakano Present
-      </div>
+/* ===== NAVBAR ===== */
 
-      <h1>
-        DikzNakano
-      </h1>
+nav {
+    width: 100%;
+    height: 80px;
 
-      <p>
-        Personal dashboard untuk menyimpan preset, project,
-        informasi sosial media, dan berbagai hal lainnya.
-      </p>
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-      <div class="buttons">
-        <a href="#" class="btn-primary">
-          Explore
-        </a>
+    padding: 0 8%;
 
-        <a href="#" class="btn-secondary">
-          Preset
-        </a>
-      </div>
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.12);
+}
 
-    </section>
+/* ===== LOGO ===== */
 
-    <section class="cards">
+.logo {
+    position: relative;
+    display: inline-block;
 
-      <div class="card">
-        <h3>🎨 Preset</h3>
-        <p>
-          Tempat menyimpan preset Jedag Jedug, GFX,
-          dan preset lainnya.
-        </p>
-      </div>
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
 
-      <div class="card">
-        <h3>📱 Social Media</h3>
-        <p>
-          TikTok, Instagram, GitHub dan platform lainnya.
-        </p>
-      </div>
+    color: #ffffff;
 
-      <div class="card">
-        <h3>⚡ Projects</h3>
-        <p>
-          Berbagai project yang sedang dikembangkan.
-        </p>
-      </div>
+    text-shadow:
+        0 0 5px rgba(255, 50, 50, .25),
+        0 0 10px rgba(255, 50, 50, .15);
 
-    </section>
-  </main>
+    animation: stretchIntro .08s ease-out forwards;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.logo span {
+    color: #ff2d2d;
+
+    text-shadow:
+        0 0 6px rgba(255, 45, 45, .35),
+        0 0 12px rgba(255, 45, 45, .2);
+}
+
+.logo::after {
+    content: "";
+    position: absolute;
+
+    top: -20%;
+    left: -150%;
+
+    width: 40%;
+    height: 140%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.85),
+        transparent
+    );
+
+    transform: skewX(-25deg);
+
+    animation: shineIntro .5s ease forwards;
+    animation-delay: .08s;
+}
+
+/* ===== MENU ===== */
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #d0d0d0;
+    text-decoration: none;
+    font-size: .95rem;
+
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: #ff3a3a;
+
+    text-shadow:
+        0 0 5px rgba(255, 50, 50, .4);
+}
+
+/* ===== HERO ===== */
+
+.hero {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 8px rgba(255, 50, 50, .25),
+        0 0 18px rgba(255, 50, 50, .15);
+}
+
+.hero h1 span {
+    color: #ff2d2d;
+}
+
+.hero p {
+    max-width: 700px;
+
+    color: #bdbdbd;
+
+    line-height: 1.8;
+    font-size: 1rem;
+
+    margin-bottom: 35px;
+}
+
+/* ===== BUTTON ===== */
+
+.btn {
+    display: inline-block;
+
+    padding: 14px 32px;
+
+    background: rgba(255, 35, 35, .12);
+
+    border: 1px solid rgba(255, 35, 35, .3);
+
+    border-radius: 12px;
+
+    color: #fff;
+    text-decoration: none;
+
+    transition: .3s;
+}
+
+.btn:hover {
+    background: rgba(255, 35, 35, .2);
+
+    box-shadow:
+        0 0 12px rgba(255, 35, 35, .25);
+}
+
+/* ===== CARD ===== */
+
+.cards {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 20px;
+
+    width: 100%;
+    max-width: 1200px;
+
+    margin-top: 60px;
+}
+
+.card {
+    padding: 25px;
+
+    background: rgba(255,255,255,.02);
+
+    border: 1px solid rgba(255,0,0,.1);
+
+    border-radius: 16px;
+
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(255,0,0,.25);
+
+    box-shadow:
+        0 0 15px rgba(255,0,0,.12);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #ff4d4d;
+}
+
+.card p {
+    color: #cfcfcf;
+    line-height: 1.7;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    text-align: center;
+
+    padding: 25px;
+
+    color: #888;
+
+    border-top: 1px solid rgba(255,0,0,.08);
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes stretchIntro {
+    0% {
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(1.2);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes shineIntro {
+    0% {
+        left: -150%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 150%;
+        opacity: 0;
+    }
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+
+    nav {
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2.6rem;
+    }
+
+    .hero p {
+        font-size: .95rem;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+}
