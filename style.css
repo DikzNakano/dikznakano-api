@@ -78,12 +78,15 @@ header::after{
 
 .logo{
   position: relative;
+  display: inline-block;
 
-  font-size:28px;
-  font-weight:700;
-  letter-spacing:1px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
 
-  animation: stretchIntro .08s ease-out forwards;
+  color: #fff;
+
+  animation: glitchIntro .35s ease-out;
 }
 
 .logo span{
@@ -95,29 +98,34 @@ header::after{
   0 0 24px rgba(255,0,0,.25);
 }
 
+/* layer merah */
+.logo::before{
+  content: attr(data-text);
+
+  position: absolute;
+  inset: 0;
+
+  color: #ff4040;
+  opacity: .55;
+
+  pointer-events: none;
+
+  animation: glitchRed .35s ease-out;
+}
+
+/* layer putih */
 .logo::after{
-  content:"";
-  position:absolute;
+  content: attr(data-text);
 
-  top:-20%;
-  left:-150%;
+  position: absolute;
+  inset: 0;
 
-  width:40%;
-  height:140%;
+  color: #ffffff;
+  opacity: .35;
 
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.9),
-    transparent
-  );
+  pointer-events: none;
 
-  transform:skewX(-25deg);
-
-  animation:shineIntro .5s ease forwards;
-  animation-delay:.08s;
-
-  pointer-events:none;
+  animation: glitchWhite .35s ease-out;
 }
 
 nav{
@@ -352,33 +360,79 @@ nav a:hover{
    RESPONSIVE
 ======================= */
 
-@keyframes stretchIntro{
+@keyframes glitchIntro{
   0%{
-    transform:scaleX(1);
+    transform: translate(0);
   }
 
-  50%{
-    transform:scaleX(1.2);
+  15%{
+    transform: translate(-2px,1px);
+  }
+
+  30%{
+    transform: translate(2px,-1px);
+  }
+
+  45%{
+    transform: translate(-2px,-1px);
+  }
+
+  60%{
+    transform: translate(2px,1px);
   }
 
   100%{
-    transform:scaleX(1);
+    transform: translate(0);
   }
 }
 
-@keyframes shineIntro{
+@keyframes glitchRed{
   0%{
-    left:-150%;
-    opacity:0;
+    transform: translate(0);
+    opacity: 0;
   }
 
   20%{
-    opacity:1;
+    transform: translate(-4px,0);
+    opacity: .55;
+  }
+
+  40%{
+    transform: translate(4px,0);
+  }
+
+  60%{
+    transform: translate(-2px,0);
   }
 
   100%{
-    left:150%;
-    opacity:0;
+    transform: translate(0);
+    opacity: 0;
+  }
+}
+
+@keyframes glitchWhite{
+  0%{
+    transform: translate(0);
+    opacity: 0;
+  }
+
+  20%{
+    transform: translate(4px,0);
+    opacity: .35;
+  }
+
+  40%{
+    transform: translate(-4px,0);
+  }
+
+  60%{
+    transform: translate(2px,0);
+  }
+
+  100%{
+    transform: translate(0);
+    opacity: 0;
   }
 }
 
