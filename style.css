@@ -4,29 +4,18 @@
   box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
   min-height:100vh;
-
-  font-family:'Segoe UI',sans-serif;
-
   background:#050505;
-
+  font-family:'Segoe UI',sans-serif;
   overflow-x:hidden;
-
   position:relative;
 }
 
-/* =======================
-   GRID BACKGROUND
-======================= */
+/* GRID */
 
 body::before{
   content:"";
-
   position:fixed;
   inset:0;
 
@@ -44,21 +33,14 @@ body::before{
   background-size:50px 50px;
 
   pointer-events:none;
-
-  z-index:0;
 }
 
-/* =======================
-   AMBIENT GLOW
-======================= */
+/* GLOW */
 
 .glow-bg{
   position:fixed;
   inset:0;
-
   pointer-events:none;
-
-  z-index:0;
 }
 
 .glow-bg::before{
@@ -81,7 +63,7 @@ body::before{
       transparent 70%
     );
 
-  filter:blur(50px);
+  filter:blur(25px);
 }
 
 .glow-bg::after{
@@ -92,8 +74,8 @@ body::before{
   width:700px;
   height:700px;
 
-  bottom:-250px;
   right:-250px;
+  bottom:-250px;
 
   border-radius:50%;
 
@@ -104,151 +86,56 @@ body::before{
       transparent 70%
     );
 
-  filter:blur(50px);
+  filter:blur(25px);
 }
 
-/* =======================
-   SHINE
-======================= */
-
-.shine{
-  position:fixed;
-  inset:0;
-
-  pointer-events:none;
-
-  overflow:hidden;
-
-  z-index:1;
-}
-
-.shine::before{
-  content:"";
-
-  position:absolute;
-
-  top:-100%;
-  left:-150%;
-
-  width:220px;
-  height:300%;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,.08),
-      transparent
-    );
-
-  transform:rotate(25deg);
-
-  filter:blur(12px);
-
-  animation:shineMove 10s linear infinite;
-}
-
-@keyframes shineMove{
-
-  0%,85%{
-    left:-150%;
-  }
-
-  100%{
-    left:180%;
-  }
-
-}
-
-/* =======================
-   LAYOUT
-======================= */
+/* CONTAINER */
 
 .container{
   max-width:1100px;
-
   margin:auto;
-
   padding:80px 20px;
-
   position:relative;
-
   z-index:2;
 }
 
-/* =======================
-   HERO
-======================= */
+/* HERO */
 
 .hero{
   text-align:center;
-
   margin-bottom:40px;
 }
 
 .tag{
   display:block;
-
   color:#c7a850;
-
   letter-spacing:8px;
-
   font-size:.85rem;
-
   margin-bottom:15px;
 }
 
 .name{
   font-size:5rem;
-
   color:#f5d77a;
-
   margin-bottom:15px;
 
   text-shadow:
-    0 0 10px rgba(255,223,120,.65),
-    0 0 25px rgba(255,223,120,.5),
-    0 0 50px rgba(212,175,55,.4),
-    0 0 90px rgba(212,175,55,.25);
-
-  animation:
-    goldGlow 4s ease-in-out infinite;
-}
-
-@keyframes goldGlow{
-
-  0%,100%{
-    text-shadow:
-      0 0 10px rgba(255,223,120,.55),
-      0 0 25px rgba(255,223,120,.4),
-      0 0 50px rgba(212,175,55,.3),
-      0 0 90px rgba(212,175,55,.2);
-  }
-
-  50%{
-    text-shadow:
-      0 0 15px rgba(255,223,120,.8),
-      0 0 35px rgba(255,223,120,.6),
-      0 0 70px rgba(212,175,55,.5),
-      0 0 120px rgba(212,175,55,.3);
-  }
-
+    0 0 10px rgba(255,223,120,.55),
+    0 0 25px rgba(255,223,120,.4),
+    0 0 50px rgba(212,175,55,.3),
+    0 0 90px rgba(212,175,55,.2);
 }
 
 .role{
   color:#b89a49;
-
   letter-spacing:3px;
 }
 
-/* =======================
-   ABOUT & STATS
-======================= */
+/* CARD */
 
 .about-card,
 .stats-card{
   padding:35px;
-
   margin-bottom:30px;
 
   border-radius:24px;
@@ -274,19 +161,15 @@ body::before{
 .about-card h2,
 .stats-card h2{
   color:#f5d77a;
-
   margin-bottom:15px;
 }
 
 .about-card p{
   color:#d8c58f;
-
   line-height:1.8;
 }
 
-/* =======================
-   TIKTOK STATS
-======================= */
+/* STATS */
 
 .stats-grid{
   display:grid;
@@ -313,9 +196,7 @@ body::before{
 
 .stat-box h3{
   color:#f5d77a;
-
   font-size:2rem;
-
   margin-bottom:8px;
 }
 
@@ -323,9 +204,7 @@ body::before{
   color:#c7a850;
 }
 
-/* =======================
-   NAVIGATION
-======================= */
+/* NAVIGATION */
 
 .nav-grid{
   display:grid;
@@ -337,8 +216,6 @@ body::before{
 }
 
 .nav-card{
-  position:relative;
-
   min-height:180px;
 
   display:flex;
@@ -350,8 +227,6 @@ body::before{
   text-decoration:none;
 
   border-radius:24px;
-
-  overflow:hidden;
 
   background:
     linear-gradient(
@@ -382,9 +257,7 @@ body::before{
 
 .nav-card h3{
   color:#f5d77a;
-
   font-size:1.7rem;
-
   margin-bottom:12px;
 }
 
@@ -392,9 +265,7 @@ body::before{
   color:#c7a850;
 }
 
-/* =======================
-   MOBILE
-======================= */
+/* MOBILE */
 
 @media(max-width:768px){
 
