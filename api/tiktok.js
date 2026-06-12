@@ -1,27 +1,43 @@
-import fs from "fs"
-import path from "path"
-
-export default function handler(req, res) {
+export default async function handler(req, res) {
 
   try {
 
-    const filePath = path.join(
-      process.cwd(),
-      "data",
-      "tiktok.json"
+    const response = await fetch(
+      "https://api.theresav.biz.id/stalk/tiktok?username=dikzapalah&apikey=MNWh8"
     )
 
-    const data = JSON.parse(
-      fs.readFileSync(filePath, "utf8")
-    )
+    const json = await response.json()
 
-    res.status(200).json(data)
+    const profile = json.result.profile
+    const stats = json.result.stats
+
+    res.status(200).json({
+      success: true,
+
+      account: {
+        username: profile.username,
+        nickname: profile.nickname,
+        bio: profile.bio,
+        verified: profile.verified,
+        avatar: profile.avatar.large,
+        url: profile.url
+      },
+
+      stats: {
+        followers: stats.followers,
+        following: stats.following,
+        likes: stats.likes,
+        videos: stats.videos
+      },
+
+      updatedAt: new Date().toISOString()
+    })
 
   } catch (err) {
 
     res.status(500).json({
       success: false,
-      message: "Failed to load TikTok stats"
+      message: "Failed to fetch TikTok data"
     })
 
   }
